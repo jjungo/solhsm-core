@@ -1,0 +1,41 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:             hsm-core
+# Required-Start:       $remote_fs $local_fs $syslog
+# Required-Stop:        $remote_fs $local_fs $syslog
+# Default-Start:        2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:    Simple Open and Light HSM core
+### END INIT INFO
+
+# /etc/init.d/hsm-core: start stop restart the hsm-core daemon
+
+# Some things that run always
+touch /var/lock/hsm-core
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    echo "Starting hsm-core "
+    /usr/bin/hsm-core &
+    echo "ok"
+    ;;
+  stop)
+    echo "Stopping hsm-core"
+    pkill hsm-core
+    rm -f /var/lock/hsm-core
+    echo "ok"
+    ;;
+  restart)
+    $0 stop
+    sleep 2
+    $0 start
+    ;;
+  *)
+    echo "Usage: /etc/init.d/hsm-core {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
