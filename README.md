@@ -1,16 +1,16 @@
 solhsm-core software
 =====================
 
-Simple Light and Open HSM is project that allows OpenSSL's users to enhance 
-security by storing private keys on a Harware Security Module based on a 
+Simple Light and Open HSM is project that allows OpenSSL's users to enhance
+security by storing private keys on a Harware Security Module based on a
 BeagleBoneBlack (or whatever if you want). The Hardware Security Module
 works with the solHSM-PROTOCOL in order to communicate over IP with an
 OpenSSL ENGINE (solHSM-ENGINE).
 
-solHSM-Core is the main software on the HSM that provide some basics 
+solHSM-Core is the main software on the HSM that provide some basics
 cyptographic operations.
 
-Requirement 
+Requirement
 -----------
     >=gcc-4.7
     git://github.com/jedisct1/libsodium.git
@@ -34,19 +34,22 @@ Install
     ./autogen.sh
     ./configure && make
     sudo make install
-    
-How to use
+
+Setup and run
 ----------
-    /etc/init.d/hsm-core start
 
-In order to comuunicate with your hsm client (web server), you need to create 
-and share certificates. In order to create certificates, go to the tools DIR and 
-follow these instructions.
+In order to communicate with your hsm client (web server), you need to create
+and share certificates:
 
+    $ cd tools
     $ make
-    $ ./generate_cert name
+    $ ./generate_cert cert_name
 
-Certificates MUST be in:
+`./generate_cert cert_name` will create public (`*.cert`) and private
+(`*.cert_secret`) certificate.
+Keys are generate on 256 bits (ECC with Curve25519).
+
+On HSM side, certificates **MUST** be in:
 
     /etc/hsm/server/
     ├── pub_key
@@ -55,14 +58,20 @@ Certificates MUST be in:
     ├── server.cert
     └── server.cert_secret
 
+On the client side, [solhsm-engine](https://github.com/jjungo/solhsm-engine)
+you can either build your Docker images with the Dockerfile or place certificates
+in appropriate directories (read the solhsm-engine doc).
+
+Run hsm-core:
+
+    /etc/init.d/hsm-core start
+
 Uninstall
 ---------
-Uninstall but keep cert and database:
+Uninstall but keep certificates and database:
 
     sudo make uninstall
 
 Full uninstall
 
     sudo make fulluninstall
-
-
