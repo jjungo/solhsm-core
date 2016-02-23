@@ -1,10 +1,9 @@
-/* <@LICENSE>
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to you under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at:
+/*
+ * Copyright 2016 Joël Jungo
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  * 
  *     http://www.apache.org/licenses/LICENSE-2.0
  * 
@@ -13,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * </@LICENSE>
+ *
  */
 /**
  * Library provides a small interface to interact with our sqlite3 database.
@@ -48,7 +47,7 @@ typedef int (*callback)(void *param, int argc, char **argv, char **azColName);
  * @param cb callback function to process data.
  * @return -1 if error, 0 if succeed
  */
-int get_key_priv_from_id        (uint16_t id, callback cb, void *data);
+int get_key_priv(uint16_t id, callback cb, void *data);
 /**
  * Method to get public key from id.
  * 
@@ -56,7 +55,7 @@ int get_key_priv_from_id        (uint16_t id, callback cb, void *data);
  * @param cb callback function to process data.
  * @return -1 if error, 0 if succeed
  */
-int get_key_pub_from_id         (uint16_t id, callback cb, void *data);
+int get_key_pub(uint16_t id, callback cb, void *data);
 /**
  * Method to get dummy private key from id.
  * 
@@ -64,7 +63,7 @@ int get_key_pub_from_id         (uint16_t id, callback cb, void *data);
  * @param cb callback function to process data.
  * @return -1 if error, 0 if succeed
  */
-int get_key_dumm_priv_from_id   (uint16_t id, callback cb, void *data);
+int get_key_dumm_priv(uint16_t id, callback cb, void *data);
 /**
  * Method to get dummy public key from id.
  * 
@@ -72,7 +71,7 @@ int get_key_dumm_priv_from_id   (uint16_t id, callback cb, void *data);
  * @param cb callback function to process data.
  * @return -1 if error, 0 if succeed
  */
-int get_key_dumm_pub_from_id    (uint16_t id, callback cb, void *data);
+int get_key_dumm_pub(uint16_t id, callback cb, void *data);
 /**
  * Method to get the size of key from id.
  * 
@@ -80,6 +79,6 @@ int get_key_dumm_pub_from_id    (uint16_t id, callback cb, void *data);
  * @param cb callback function to process data.
  * @return -1 if error, 0 if succeed
  */
-int get_key_size_from_id        (uint16_t id, callback cb, void *data);
+int get_key_size_from_id(uint16_t id, callback cb, void *data);
 #endif
 
