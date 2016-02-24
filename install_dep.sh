@@ -44,10 +44,5 @@ check_dep() {
     fi
 }
 
-
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root"
-else
-    check_dep
-    ./dep.sh
-fi
+check_dep
+./dep.sh
