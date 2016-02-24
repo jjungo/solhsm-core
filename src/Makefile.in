@@ -32,19 +32,19 @@ install:
 	cp ../scripts/$(EXEC) /etc/init.d/$(EXEC)
 	chmod +x /etc/init.d/$(EXEC)
 	update-rc.d $(EXEC) defaults
-	mkdir -p /usr/share/hsm/db/  /etc/hsm/server/pub_key/
-	
+	mkdir -p /etc/hsm/server/pub_key/
+
 uninstall:
 	rm /etc/init.d/$(EXEC)
 	update-rc.d $(EXEC) remove
 	rm /usr/bin/$(EXEC)
-	echo " /usr/share/hsm/db/  /etc/hsm/server/pub_key/ are still here une make fulluninstall for remove them"
+	echo " /data/db/  /etc/hsm/server/pub_key/ are still here une make fulluninstall for remove them"
 
 fulluninstall:
 	rm /etc/init.d/$(EXEC)
 	update-rc.d $(EXEC) remove
 	rm /usr/bin/$(EXEC)
-	rm -r  /usr/share/hsm/db/  /etc/hsm/server/pub_key/
+	rm -r  /data/db/  /etc/hsm/server/pub_key/
 
 clean:
 	rm -rf *.o *.d
