@@ -33,6 +33,7 @@ install:
 	chmod +x /etc/init.d/$(EXEC)
 	update-rc.d $(EXEC) defaults
 	mkdir -p /etc/hsm/server/pub_key/
+	mkdir -p /data/db
 
 uninstall:
 	rm /etc/init.d/$(EXEC)
@@ -44,7 +45,7 @@ fulluninstall:
 	rm /etc/init.d/$(EXEC)
 	update-rc.d $(EXEC) remove
 	rm /usr/bin/$(EXEC)
-	rm -r  /data/db/  /etc/hsm/server/pub_key/
+	rm -r  /data/db/  /etc/hsm/
 
 clean:
 	rm -rf *.o *.d
