@@ -1,16 +1,16 @@
 solhsm-core software
 =====================
 
-Simple Light and Open HSM is project that allows OpenSSL's users to enhance
+Simple Light and Open HSM is a project that allows OpenSSL's users to enhance
 security by storing private keys on a Harware Security Module based on a
-BeagleBoneBlack (or whatever if you want). The Hardware Security Module
-works with the solHSM-PROTOCOL in order to communicate over IP with an
-OpenSSL ENGINE (solHSM-ENGINE).
+BeagleBoneBlack (or whatever you want). The Hardware Security Module
+works with the solHSM-PROTOCOL in order to communicate with an
+OpenSSL ENGINE (solHSM-ENGINE) over IP.
 
-solHSM-Core is the main software on the HSM that provide some basics
+solHSM-Core is the main software on the HSM that provides some basic
 cyptographic operations.
 
-Requirement
+Requirements
 -----------
     >=gcc-4.7
     git://github.com/jedisct1/libsodium.git
@@ -38,7 +38,7 @@ Install
 Setup and run
 ----------
 
-In order to communicate with your hsm client (web server), you need to create
+In order to communicate with your HSM client (web server), you need to create
 and share certificates:
 
     $ cd tools
@@ -46,10 +46,10 @@ and share certificates:
     $ ./generate_cert cert_name
 
 `./generate_cert cert_name` will create public (`*.cert`) and private
-(`*.cert_secret`) certificate.
-Keys are generate on 256 bits (ECC with Curve25519).
+(`*.cert_secret`) certificates.
+Keys are generated on 256 bits (ECC with Curve25519).
 
-On HSM side, certificates **MUST** be in:
+On the HSM side, certificates **MUST** be in:
 
     /etc/hsm/server/
     ├── pub_key
