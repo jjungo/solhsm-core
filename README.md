@@ -10,6 +10,8 @@ OpenSSL ENGINE (solHSM-ENGINE) over IP.
 solHSM-Core is the main software on the HSM that provides some basic
 cyptographic operations.
 
+Please read the [wiki](https://github.com/jjungo/solhsm-core/wiki) for more informations
+
 Requirements
 -----------
     >=gcc-4.7
